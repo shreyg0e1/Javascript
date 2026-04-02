@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root"> 
+        <div id="first">
+            <div id="bmi">BMI Calculator</div>
+            <div id="gender">
+                <button id="male"><img src="./male.png" alt="male" class="emoticon"><div id="txt_male">Male</div></button>
+                <button id="female"><img src="./female.png" alt="female" class="emoticon"><div id="txt_female">Female</div></button>
+            </div>
+            <div id="actual_content">
+                <div id="store_data" style="background: none;">
+                    <button id="change_units" ><img src="./symbol.png" alt="change_units" class="emoticon"> <div id="txt_units">Change Units</div></button> 
+                    Age
+                    <div id="age_value"><input type="number" required min="1" style="width: 100px;" ></div>
+                    Height
+                    <div id="height_value" class="input-container"><input id="lambai" type="number" required min="1" placeholder="in m" style="width: 100px;" >
+                        <select id="heightUnit">
+                            <option value="m" id="meter">M</option>
+                            <option value="cm" id="centimeter">Cm</option>
+                          </select></div>
+                    Weight
+                    <div id="weight_value" class="input-container"><input id="wajan" type="number" required min="1" placeholder="in kg" style="width: 100px;">
+                        <select id="weightUnit">
+                            <option value="kg">Kg</option>
+                            <option value="lbs">lbs</option>
+                          </select></div>
+
+                    <button id="calculate">Calculate</button><img src="./big_emoticon.png" alt="big_emoticon" id="big_emoticon" style="display: inline; height: 170px; width: 290px; padding-right: 120px; ">
+                </div>
+                <div id="result" style="color: aqua;">
+                    Your BMI 
+                    <div id="display"></div>
+                    <div id="underweight"><img src="./underweight.png" alt="underweight" class="emoticon">Underweight</div>
+                    <div id="normal"><img src="./normal.png" alt="normal" class="emoticon">Normal</div>
+                    <div id="fit"><img src="./fit.png" alt="fit" class="emoticon">Fit</div>
+                    <div id="overweight"><img src="./overweight.png" alt="overweight" class="emoticon" id="ow">Overweight</div>
+                    <div id="obese"><img src="./obese.png" alt="obese" class="emoticon">Obese</div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="first.js"></script>
+</body>
+</html>
