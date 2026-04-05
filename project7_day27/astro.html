@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Joshi - Mystic Astrology</title>
+    <link rel="stylesheet" href="astro.css">
+</head>
+<body>
+    <!-- Twinkling Stars Overlay -->
+    <div class="stars-overlay">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <!-- Main Title -->
+    <h1 class="main-title">Spiritual Saints</h1>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left Side - Characters Scene -->
+        <div class="scene-container">
+            <!-- Zodiac Circle behind Pandit -->
+            <div class="zodiac-circle">
+                <img src="zodiac.png" alt="Zodiac Circle">
+            </div>
+            
+            <!-- Pandit Ji -->
+            <div class="pandit">
+                <img src="pandit.png" alt="Pandit Ji">
+            </div>
+            
+            <!-- Boy -->
+            <div class="boy">
+                <img src="boy.png" alt="Boy">
+            </div>
+            
+            <!-- Girl -->
+            <div class="girl">
+                <img src="girl.png" alt="Girl">
+            </div>
+        </div>
+
+        <!-- Right Side - Form -->
+        <div class="form-container">
+            <form class="astro-form">
+                <div class="form-group">
+                    <input type="text" placeholder="First name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Surname" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="number" placeholder="Day" min="1" max="31" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Month" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="number" placeholder="Year" min="1900" max="2024" required>
+                </div>
+                <button type="submit" class="submit-button">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+    <script src="./astro.js"></script>
+</body>
+</html>
