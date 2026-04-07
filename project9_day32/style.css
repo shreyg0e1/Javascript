@@ -1,0 +1,1757 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: 
+        linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 25%, #2D1B1B 50%, #1F1611 75%, #0A0A0A 100%),
+        radial-gradient(circle at 30% 20%, rgba(139, 0, 0, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 70% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+    background-attachment: fixed;
+    color: #F7E7CE;
+    min-height: 100vh;
+    line-height: 1.618;
+    overflow-x: hidden;
+    position: relative;
+    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="3" fill="%23FFD700" opacity="0.8"/></svg>'), auto;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="20" r="1" fill="%23FFD700" opacity="0.1"><animate attributeName="r" values="1;3;1" dur="4s" repeatCount="indefinite"/></circle><circle cx="20" cy="60" r="1" fill="%23FFA500" opacity="0.1"><animate attributeName="r" values="1;2;1" dur="6s" repeatCount="indefinite"/></circle><circle cx="80" cy="80" r="1" fill="%238B0000" opacity="0.1"><animate attributeName="r" values="1;2.5;1" dur="5s" repeatCount="indefinite"/></circle></svg>') repeat,
+        radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(139, 0, 0, 0.04) 0%, transparent 40%);
+    z-index: -1;
+    animation: luxuriousAmbient 25s ease-in-out infinite;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3.236rem 2rem; /* Golden ratio spacing */
+    position: relative;
+    z-index: 1;
+}
+/* Header Styles - Reduced margins for faster content visibility */
+.header {
+    text-align: center;
+    margin-bottom: 4rem; /* Reduced from 12.944rem */
+    padding: 3rem 0; /* Reduced from 9.708rem */
+    position: relative;
+    animation: luxuriousEntrance 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster animation */
+    perspective: 1000px;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.8), transparent);
+    transform: translateX(-50%);
+    animation: shimmerLine 3s ease-in-out infinite;
+}
+
+.header::after {
+    content: "◆";
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #FFD700;
+    animation: gentleGlow 4s ease-in-out infinite;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 7.5rem; /* Increased size */
+    font-weight: 300;
+    background: linear-gradient(
+        135deg, 
+        #FFD700 0%, 
+        #FFA500 25%, 
+        #FF8C00 50%, 
+        #FFD700 75%, 
+        #F4A460 100%
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2.618rem;
+    text-shadow: 
+        0 0 80px rgba(255, 215, 0, 0.4),
+        0 4px 20px rgba(0, 0, 0, 0.8);
+    animation: 
+        luxuriousShine 6s ease-in-out infinite,
+        magneticFloat 8s ease-in-out infinite,
+        breathe 4s ease-in-out infinite;
+    letter-spacing: -2px;
+    line-height: 0.9;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.6), rgba(255, 140, 0, 0.4));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: -1;
+    filter: blur(1px);
+}
+
+.subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgba(247, 231, 206, 0.9);
+    max-width: 900px;
+    line-height: 1.8;
+    margin: 0 auto;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+    animation: 
+        luxuriousFadeIn 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both, /* Faster animation */
+        subtleFloat 12s ease-in-out infinite 1s;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+/* Collections Grid - Updated to Bento Grid with 3 cards per row */
+.collections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 2rem;
+    margin-bottom: 6rem; /* Reduced margin */
+    animation: staggeredReveal 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both; /* Faster animation */
+    perspective: 1500px;
+}
+
+.collection-card {
+    background: linear-gradient(
+        145deg, 
+        rgba(247, 231, 206, 0.12), 
+        rgba(255, 215, 0, 0.06),
+        rgba(139, 0, 0, 0.04)
+    );
+    backdrop-filter: blur(40px) saturate(150%);
+    border-radius: 24px; /* Slightly smaller radius */
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster transition */
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    cursor: pointer;
+    position: relative;
+    box-shadow: 
+        0 16px 64px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(139, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 215, 0, 0.15),
+        0 0 0 0.5px rgba(255, 215, 0, 0.1);
+    animation: cardAppear 0.8s ease var(--stagger-delay, 0s) both; /* Faster animation */
+    transform-style: preserve-3d;
+    aspect-ratio: 1.2/1; /* Better aspect ratio for bento grid */
+}
+
+/* Remove complex animations for better performance */
+.collection-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.15), 
+        rgba(247, 231, 206, 0.1),
+        transparent
+    );
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
+}
+
+.collection-card:hover::before {
+    left: 100%;
+}
+
+.collection-card:hover {
+    transform: 
+        translateY(-12px) 
+        scale(1.02);
+    box-shadow: 
+        0 24px 80px rgba(0, 0, 0, 0.5),
+        0 12px 48px rgba(139, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 215, 0, 0.4),
+        inset 0 1px 0 rgba(255, 215, 0, 0.25),
+        0 0 80px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+/* Updated card image to fill the entire card */
+.card-image {
+    height: 70%; /* Takes 70% of card height */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: 
+        linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%),
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    background-size: 200% 200%, 100% 100%;
+    animation: appetizingGlow 10s ease infinite;
+    position: relative;
+    border-radius: 24px 24px 0 0;
+}
+
+/* Add offer badge to card image */
+.card-image::after {
+    content: attr(data-offer);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #FF4444, #CC0000);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 16px rgba(255, 68, 68, 0.4);
+    z-index: 10;
+}
+
+.card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g opacity="0.1"><circle cx="20" cy="30" r="1" fill="white"><animate attributeName="cy" values="30;10;30" dur="3s" repeatCount="indefinite"/></circle><circle cx="80" cy="25" r="1" fill="white"><animate attributeName="cy" values="25;5;25" dur="4s" repeatCount="indefinite"/></circle><circle cx="50" cy="20" r="0.5" fill="white"><animate attributeName="cy" values="20;0;20" dur="5s" repeatCount="indefinite"/></circle></g></svg>') repeat;
+    animation: steamRise 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.cafe-icon {
+    font-size: 4rem; /* Smaller icon to fit better */
+    animation: 
+        magneticFloat 6s ease-in-out infinite,
+        appetiteGlow 4s ease-in-out infinite;
+    filter: 
+        drop-shadow(0 8px 24px rgba(0, 0, 0, 0.6))
+        drop-shadow(0 0 16px rgba(255, 215, 0, 0.4));
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    z-index: 2;
+}
+
+.collection-card:hover .cafe-icon {
+    transform: scale(1.15) rotateZ(3deg);
+    filter: 
+        drop-shadow(0 12px 36px rgba(0, 0, 0, 0.8))
+        drop-shadow(0 0 24px rgba(255, 215, 0, 0.6))
+        drop-shadow(0 0 40px rgba(255, 140, 0, 0.4));
+}
+
+.card-content {
+    padding: 1.5rem; /* Reduced padding */
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 13, 13, 0.8),
+        rgba(13, 13, 13, 0.95)
+    );
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; /* Smaller font */
+    font-weight: 700;
+    margin-bottom: 0.5rem; /* Reduced margin */
+    color: #F7E7CE;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+.card-content p {
+    color: rgba(247, 231, 206, 0.8);
+    font-size: 0.9rem; /* Smaller font */
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+}
+
+/* Section Dividers */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.5), 
+        transparent
+    );
+    margin: 4rem 0; /* Reduced margin */
+    position: relative;
+}
+
+.section-divider::after {
+    content: "◆";
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    transform: translateX(-50%);
+    background: #0D0D0D;
+    color: #FFD700;
+    padding: 0 2rem;
+    font-size: 1.2rem;
+    animation: gentleGlow 4s ease-in-out infinite;
+}
+
+/* Filter Buttons */
+.filters {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 6rem; /* Reduced margin */
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: luxuriousFadeIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both; /* Faster animation */
+}
+
+.filter-btn {
+    padding: 1.2rem 2.5rem; /* Slightly smaller */
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: linear-gradient(
+        145deg, 
+        rgba(247, 231, 206, 0.08), 
+        rgba(255, 215, 0, 0.04),
+        rgba(139, 0, 0, 0.02)
+    );
+    color: #F7E7CE;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster transition */
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    backdrop-filter: blur(30px) saturate(150%);
+    position: relative;
+    overflow: hidden;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 215, 0, 0.1);
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.2), 
+        rgba(247, 231, 206, 0.1),
+        transparent
+    );
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.filter-btn::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.filter-btn:hover::before {
+    left: 100%;
+}
+
+.filter-btn:hover {
+    background: linear-gradient(
+        145deg, 
+        rgba(255, 215, 0, 0.15), 
+        rgba(247, 231, 206, 0.08),
+        rgba(139, 0, 0, 0.05)
+    );
+    transform: translateY(-4px) scale(1.03); /* Reduced transform */
+    box-shadow: 
+        0 16px 48px rgba(0, 0, 0, 0.4),
+        0 0 48px rgba(255, 215, 0, 0.3),
+        inset 0 1px 0 rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+    color: #FFD700;
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+    border-color: transparent;
+    box-shadow: 
+        0 12px 48px rgba(255, 215, 0, 0.4),
+        0 0 80px rgba(255, 215, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    color: #0D0D0D;
+    font-weight: 700;
+    animation: luxuriousPulse 3s ease-in-out infinite;
+}
+/* ===== PROMOTION SECTION - MAIN CONTAINER ===== */
+.promotion {
+    /* Gradient background with multiple colors for luxury look */
+    background: linear-gradient(
+        145deg, 
+        rgba(247, 231, 206, 0.12),  /* Light cream color */
+        rgba(255, 215, 0, 0.08),    /* Gold color */
+        rgba(139, 0, 0, 0.06)       /* Dark red color */
+    );
+    
+    /* Glass morphism effect - blur and saturation */
+    backdrop-filter: blur(40px) saturate(150%);
+    
+    /* Rounded corners for modern look */
+    border-radius: 48px;
+    
+    /* Increased padding for better height and image visibility */
+    padding: 7rem 6rem; /* Creates internal spacing and height */
+    
+    /* Flexbox layout for horizontal alignment */
+    display: flex;
+    justify-content: space-between;  /* Content on left, image on right */
+    align-items: center;             /* Vertical center alignment */
+    
+    /* Bottom spacing from next element */
+    margin-bottom: 8rem;
+    
+    /* Golden border for premium feel */
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    
+    /* For absolute positioning of pseudo elements */
+    position: relative;
+    
+    /* Hide overflow from animations */
+    overflow: hidden;
+    
+    /* Scale animation on page load */
+    animation: luxuriousScale 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+    
+    /* Multiple shadow layers for depth */
+    box-shadow: 
+        0 32px 128px rgba(0, 0, 0, 0.4),        /* Main shadow */
+        0 16px 64px rgba(139, 0, 0, 0.2),       /* Red tint shadow */
+        inset 0 2px 0 rgba(255, 215, 0, 0.15),  /* Inner highlight */
+        0 0 0 0.5px rgba(255, 215, 0, 0.1);     /* Outer glow */
+    
+    /* Limit height to 70% of viewport for better visibility */
+    max-height: 70vh;
+}
+
+/* ===== ANIMATED BACKGROUND OVERLAY ===== */
+.promotion::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    /* Multiple gradient overlays for dynamic effect */
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.06) 0%, transparent 50%), /* Gold circle */
+        radial-gradient(circle at 70% 30%, rgba(139, 0, 0, 0.04) 0%, transparent 50%),   /* Red circle */
+        conic-gradient(from 45deg at 50% 50%, transparent, rgba(255, 215, 0, 0.03), transparent); /* Rotating gradient */
+    
+    /* Slow rotation animation for subtle movement */
+    animation: luxuriousRotate 30s linear infinite;
+    z-index: 0; /* Behind content */
+}
+
+/* ===== ANIMATED BORDER GLOW ===== */
+.promotion::after {
+    content: '';
+    position: absolute;
+    top: -2px;    /* Slightly outside border */
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    
+    /* Gradient border effect */
+    background: linear-gradient(45deg, 
+        rgba(255, 215, 0, 0.3),  /* Gold */
+        transparent 30%,
+        transparent 70%,
+        rgba(255, 215, 0, 0.3)   /* Gold */
+    );
+    
+    border-radius: 48px;
+    z-index: -1;  /* Behind main container */
+    
+    /* Pulsing glow animation */
+    animation: borderGlow 4s ease-in-out infinite;
+}
+
+/* ===== CONTENT AREA (TEXT SIDE) ===== */
+.promo-content {
+    flex: 1;          /* Take available space */
+    z-index: 2;       /* Above background effects */
+    position: relative;
+    max-width: 60%;   /* Don't take more than 60% width */
+}
+
+/* ===== MAIN HEADING ===== */
+.promo-content h2 {
+    font-family: 'Playfair Display', serif;  /* Elegant serif font */
+    font-size: 3rem;                         /* Large text size */
+    margin-bottom: 1.5rem;                   /* Space below heading */
+    font-weight: 300;                        /* Light font weight */
+    color: #F7E7CE;                          /* Cream color */
+    
+    /* Slide-in animation with delay */
+    animation: luxuriousSlideIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+    
+    line-height: 1.1;      /* Tight line spacing */
+    letter-spacing: -1px;  /* Slight letter overlap */
+    
+    /* Text shadow for depth */
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== DISCOUNT PERCENTAGE ===== */
+.discount {
+    font-family: 'Playfair Display', serif;  /* Same font as heading */
+    font-size: 7rem;                         /* Even larger size for maximum visibility */
+    font-weight: 900;                        /* Extra bold */
+    
+    /* High contrast colors for maximum visibility */
+    background: linear-gradient(
+        135deg, 
+        #FFED4E 0%,   /* Bright yellow */
+        #FFD700 25%,  /* Gold */
+        #FFA500 50%,  /* Orange */
+        #FFED4E 75%,  /* Bright yellow */
+        #FFD700 100%  /* Gold */
+    );
+    
+    background-size: 100% 100%;  /* Static background for clarity */
+    -webkit-background-clip: text;        /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Make text transparent */
+    background-clip: text;
+    
+    /* Fallback color for browsers that don't support background-clip */
+    color: #FFD700;
+    
+    margin-bottom: 2rem;  /* Space below */
+    
+    /* Multiple strong text shadows for maximum visibility */
+    text-shadow: 
+        0 0 20px rgba(255, 237, 78, 1),     /* Bright yellow glow */
+        0 0 40px rgba(255, 215, 0, 0.9),    /* Gold glow layer */
+        0 0 60px rgba(255, 165, 0, 0.7),    /* Orange glow layer */
+        0 4px 8px rgba(0, 0, 0, 1),         /* Strong black shadow for contrast */
+        0 8px 16px rgba(0, 0, 0, 0.8),      /* Additional depth shadow */
+        0 0 100px rgba(255, 215, 0, 0.6);   /* Wide glow for visibility */
+    
+    line-height: 0.9;       /* Proper spacing */
+    letter-spacing: -1px;   /* Minimal overlap */
+    position: relative;     /* For pseudo element */
+    
+    /* Add text stroke for even better visibility */
+    -webkit-text-stroke: 1px rgba(255, 215, 0, 0.3);
+    
+    /* Remove animation for clarity */
+    animation: none;
+}
+
+/* ===== CLEAN UNDERLINE EFFECT ===== */
+.discount::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;  /* Very close to the text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;     /* Shorter, cleaner line */
+    height: 4px;    /* Slightly thicker for visibility */
+    
+    /* Bright, visible gradient line */
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(255, 237, 78, 0.9),  /* Bright yellow center */
+        rgba(255, 215, 0, 0.9),   /* Gold */
+        transparent
+    );
+    
+    border-radius: 2px;
+    /* Simple glow effect */
+    box-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.6),
+        0 0 20px rgba(255, 237, 78, 0.4);
+}
+
+/* ===== DESCRIPTION TEXT ===== */
+.promo-content p {
+    font-size: 1.4rem;                    /* Medium size */
+    margin-bottom: 2.5rem;                /* Space for button */
+    color: rgba(247, 231, 206, 0.9);      /* Semi-transparent cream */
+    font-weight: 400;                     /* Normal weight */
+    
+    /* Delayed slide-in animation */
+    animation: luxuriousSlideIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+    
+    line-height: 1.7;       /* Comfortable reading spacing */
+    letter-spacing: 0.5px;  /* Slight letter spacing */
+}
+
+/* ===== CALL-TO-ACTION BUTTON ===== */
+.cta-btn {
+    /* Gradient background */
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+    background-size: 300% 300%;  /* For animation */
+    
+    color: #0D0D0D;    /* Dark text */
+    border: none;      /* Remove default border */
+    
+    /* Button size and shape */
+    padding: 1.8rem 4rem;  /* Internal spacing */
+    border-radius: 60px;   /* Pill shape */
+    
+    /* Text styling */
+    font-size: 1.2rem;
+    font-weight: 800;                    /* Extra bold */
+    font-family: 'Inter', sans-serif;    /* Clean font */
+    
+    cursor: pointer;  /* Hand cursor on hover */
+    
+    /* Smooth transitions */
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Multiple shadows for depth */
+    box-shadow: 
+        0 16px 64px rgba(255, 215, 0, 0.4),    /* Main shadow */
+        0 8px 32px rgba(255, 140, 0, 0.3),     /* Orange shadow */
+        inset 0 2px 0 rgba(255, 255, 255, 0.3), /* Inner highlight */
+        0 0 0 1px rgba(255, 255, 255, 0.2);     /* Outer border */
+    
+    /* Text formatting */
+    text-transform: uppercase;  /* ALL CAPS */
+    letter-spacing: 1.5px;     /* Spaced letters */
+    
+    position: relative;  /* For pseudo elements */
+    overflow: hidden;    /* Hide overflow from effects */
+    
+    /* Continuous glow animation */
+    animation: appetizingGlow 6s ease infinite;
+}
+
+/* ===== BUTTON SHINE EFFECT ===== */
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;  /* Start off-screen */
+    width: 100%;
+    height: 100%;
+    
+    /* White shine effect */
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.4), 
+        transparent
+    );
+    
+    /* Slide across on hover */
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===== BUTTON GLOW EFFECT ===== */
+.cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 2px;           /* Inside button border */
+    background: inherit;   /* Same as button background */
+    border-radius: inherit;
+    filter: blur(8px);     /* Blur for glow */
+    opacity: 0;            /* Hidden by default */
+    transition: opacity 0.5s ease;
+    z-index: -1;          /* Behind button */
+}
+
+/* ===== BUTTON HOVER EFFECTS ===== */
+.cta-btn:hover::before {
+    left: 100%;  /* Move shine across */
+}
+
+.cta-btn:hover::after {
+    opacity: 0.8;  /* Show glow */
+}
+
+.cta-btn:hover {
+    /* Lift and slightly scale button */
+    transform: translateY(-8px) scale(1.03);
+    
+    /* Enhanced shadows */
+    box-shadow: 
+        0 20px 80px rgba(255, 215, 0, 0.5),
+        0 10px 40px rgba(255, 140, 0, 0.4),
+        0 0 100px rgba(255, 215, 0, 0.3),
+        inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    
+    background-size: 400% 400%;  /* Faster gradient animation */
+    
+    /* Multiple animations on hover */
+    animation: 
+        appetizingGlow 3s ease infinite,
+        luxuriousPulse 2s ease-in-out infinite;
+}
+
+/* ===== IMAGE SIDE CONTAINER ===== */
+.promo-image {
+    position: relative;  /* For z-index */
+    z-index: 2;         /* Above background */
+    
+    /* Slide-in animation */
+    animation: luxuriousSlideIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+}
+
+/* ===== PASTA BOWL EMOJI/ICON ===== */
+.pasta-bowl {
+    font-size: 11rem;  /* Slightly larger for better visibility */
+    
+    /* Gentle floating animation */
+    animation: 
+        gentleFloat 6s ease-in-out infinite,       /* Slower up and down movement */
+        subtleGlow 4s ease-in-out infinite;        /* Gentle glow effect */
+    
+    /* Enhanced shadow effects */
+    filter: 
+        drop-shadow(0 25px 70px rgba(0, 0, 0, 0.7))      /* Stronger main shadow */
+        drop-shadow(0 0 50px rgba(255, 215, 0, 0.5));    /* Stronger golden glow */
+    
+    /* Smooth transitions for interactions */
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===== PASTA BOWL HOVER EFFECT ===== */
+.promo-image:hover .pasta-bowl {
+    /* Scale up and rotate slightly */
+    transform: scale(1.08) rotateZ(-3deg);
+    
+    /* Enhanced shadows on hover */
+    filter: 
+        drop-shadow(0 24px 80px rgba(0, 0, 0, 0.8))
+        drop-shadow(0 0 60px rgba(255, 215, 0, 0.6))
+        drop-shadow(0 0 100px rgba(255, 140, 0, 0.4));
+}
+
+
+/* Filter Card */
+.filter-card {
+    width: 420px;
+    margin: 3rem auto;
+    padding: 4.854rem 3.236rem;
+    border-radius: 32px;
+    background: linear-gradient(
+        145deg, 
+        rgba(13, 13, 13, 0.98), 
+        rgba(26, 26, 26, 0.95),
+        rgba(45, 27, 27, 0.92)
+    );
+    backdrop-filter: blur(60px) saturate(150%);
+    box-shadow: 
+        0 40px 160px rgba(0, 0, 0, 0.8),
+        0 20px 80px rgba(139, 0, 0, 0.3),
+        inset 0 2px 0 rgba(255, 215, 0, 0.15),
+        0 0 0 1px rgba(255, 215, 0, 0.2);
+    color: #F7E7CE;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.filter-card:hover {
+    transform: translate(-50%, -50%) scale(1.02);
+    box-shadow: 
+        0 48px 200px rgba(0, 0, 0, 0.9),
+        0 24px 100px rgba(139, 0, 0, 0.4),
+        0 0 200px rgba(255, 215, 0, 0.2),
+        inset 0 2px 0 rgba(255, 215, 0, 0.2);
+}
+
+.filter-header h2 {
+    margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    color: #F7E7CE;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.filter-options label {
+    font-weight: 500;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 1rem;
+    border-radius: 16px;
+    background: linear-gradient(145deg, 
+        rgba(247, 231, 206, 0.06), 
+        rgba(255, 215, 0, 0.03)
+    );
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-options label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.1), 
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.filter-options label:hover::before {
+    left: 100%;
+}
+
+.filter-options label:hover {
+    background: linear-gradient(145deg, 
+        rgba(255, 215, 0, 0.12), 
+        rgba(247, 231, 206, 0.08)
+    );
+    transform: translateX(8px) scale(1.02);
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 
+        0 6px 24px rgba(255, 215, 0, 0.2),
+        inset 0 1px 0 rgba(255, 215, 0, 0.1);
+}
+
+.filter-options input[type="radio"] {
+    accent-color: #FFD700;
+    transform: scale(1.4);
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    gap: 1.5rem;
+}
+
+.apply-btn,
+.close-btn {
+    flex: 1;
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    color: #F7E7CE;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.apply-btn {
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+    background-size: 200% 200%;
+    color: #0D0D0D;
+    box-shadow: 
+        0 8px 32px rgba(255, 215, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    animation: appetizingGlow 6s ease infinite;
+}
+
+.apply-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.apply-btn:hover::before {
+    left: 100%;
+}
+
+.apply-btn:hover {
+    background-size: 300% 300%;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 
+        0 12px 48px rgba(255, 215, 0, 0.5),
+        0 0 60px rgba(255, 215, 0, 0.3),
+        inset 0 2px 0 rgba(255, 255, 255, 0.4);
+}
+
+.close-btn {
+    background: linear-gradient(145deg, 
+        rgba(247, 231, 206, 0.12), 
+        rgba(139, 0, 0, 0.08)
+    );
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 
+        0 6px 24px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 215, 0, 0.1);
+}
+
+.close-btn:hover {
+    background: linear-gradient(145deg, 
+        rgba(247, 231, 206, 0.18), 
+        rgba(139, 0, 0, 0.12)
+    );
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        0 0 48px rgba(255, 215, 0, 0.2),
+        inset 0 1px 0 rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* Overlay for blur effect */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.9),
+        rgba(13, 13, 13, 0.85),
+        rgba(45, 27, 27, 0.8)
+    );
+    backdrop-filter: blur(20px) saturate(120%);
+    z-index: 999;
+    display: none;
+    animation: luxuriousFadeIn 0.3s ease;
+}
+
+/* Restaurant Grid - Updated for 3 cards per row */
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    padding: 3rem 2rem;
+    font-family: 'Inter', sans-serif;
+    justify-content: center;
+    animation: staggeredReveal 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s both;
+    perspective: 1500px;
+}
+
+/* Restaurant Card - Updated with offer badges and faster loading */
+.restaurant-card {
+    width: 100%;
+    max-width: 380px;
+    justify-self: center;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(
+        145deg, 
+        rgba(247, 231, 206, 0.10), 
+        rgba(255, 215, 0, 0.06),
+        rgba(139, 0, 0, 0.04)
+    );
+    backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 
+        0 16px 64px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(139, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 215, 0, 0.15),
+        0 0 0 0.5px rgba(255, 215, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    animation: cardAppear 0.8s ease var(--stagger-delay, 0s) both;
+    transform-style: preserve-3d;
+}
+
+.restaurant-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.12), 
+        rgba(247, 231, 206, 0.08),
+        transparent
+    );
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
+}
+
+.restaurant-card:hover::before {
+    left: 100%;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-16px) scale(1.02);
+    box-shadow: 
+        0 32px 128px rgba(0, 0, 0, 0.5),
+        0 16px 64px rgba(139, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 215, 0, 0.4),
+        inset 0 2px 0 rgba(255, 215, 0, 0.25),
+        0 0 160px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* Image Wrapper - Updated for full image coverage */
+.restaurant-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.restaurant-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: 
+        brightness(0.9) 
+        contrast(1.15) 
+        saturate(1.3) 
+        sepia(8%) 
+        hue-rotate(5deg);
+}
+
+.restaurant-card:hover .restaurant-image-wrapper img {
+    transform: scale(1.1);
+    filter: 
+        brightness(1.1) 
+        contrast(1.25) 
+        saturate(1.5) 
+        sepia(12%) 
+        hue-rotate(8deg);
+}
+
+/* Offer Badge - Added prominent offer display */
+.discount-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+    background-size: 200% 200%;
+    color: #0D0D0D;
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 
+        0 6px 24px rgba(255, 215, 0, 0.4),
+        0 3px 12px rgba(255, 140, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    animation: 
+        luxuriousPulse 4s ease-in-out infinite,
+        appetizingGlow 6s ease infinite;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.discount-badge:hover {
+    transform: scale(1.05);
+    background-size: 300% 300%;
+    box-shadow: 
+        0 8px 32px rgba(255, 215, 0, 0.5),
+        0 4px 16px rgba(255, 140, 0, 0.4),
+        inset 0 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+.discount-badge::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: linear-gradient(to bottom, 
+        rgba(255, 215, 0, 0.8), 
+        rgba(255, 140, 0, 0.4),
+        transparent
+    );
+    border-radius: 0 0 4px 4px;
+    animation: honeyDrip 4s ease-in-out infinite;
+}
+
+.badge-icon {
+    font-size: 0.8rem;
+    color: #0D0D0D;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Card Content */
+.cardcontent {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #F7E7CE;
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 13, 13, 0.85),
+        rgba(13, 13, 13, 0.95)
+    );
+}
+
+.cardcontentheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #F7E7CE;
+    gap: 1rem;
+}
+
+.rname {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #F7E7CE;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+    flex: 1;
+}
+
+.restaurantrating {
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+    background-size: 200% 200%;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    color: #0D0D0D;
+    border-radius: 16px;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 
+        0 4px 16px rgba(255, 215, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    animation: appetizingGlow 8s ease infinite;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.cardcontentmiddle {
+    font-size: 1rem;
+    color: rgba(247, 231, 206, 0.8);
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.cardcontentfooter {
+    font-size: 1rem;
+    color: rgba(247, 231, 206, 0.7);
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.restaurantpricefortwo::before {
+    content: "₹";
+    color: #FFD700;
+    font-weight: 700;
+}
+
+.restaurantdistance::after {
+    content: " km";
+}
+
+/* Additional Animations */
+@keyframes offerPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 
+            0 6px 24px rgba(255, 68, 68, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    50% { 
+        transform: scale(1.05); 
+        box-shadow: 
+            0 8px 32px rgba(255, 68, 68, 0.6),
+            inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Ultra-Premium Animations */
+@keyframes luxuriousAmbient {
+    0%, 100% { opacity: 1; transform: translateY(0px); }
+    33% { opacity: 0.8; transform: translateY(-2px); }
+    66% { opacity: 0.9; transform: translateY(1px); }
+}
+
+@keyframes luxuriousEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.95);
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+        filter: blur(0px);
+    }
+}
+
+@keyframes luxuriousFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes luxuriousScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) rotateX(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateX(0deg);
+    }
+}
+
+@keyframes luxuriousSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-60px) rotateY(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px) rotateY(0deg);
+    }
+}
+
+@keyframes staggeredReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) rotateX(10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) rotateX(0deg);
+    }
+}
+
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95) rotateX(8deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) scale(1) rotateX(0deg);
+    }
+}
+
+@keyframes luxuriousShine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes luxuriousPulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 
+            0 8px 32px rgba(255, 215, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    50% { 
+        transform: scale(1.02); 
+        box-shadow: 
+            0 12px 48px rgba(255, 215, 0, 0.5),
+            inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    }
+}
+
+@keyframes luxuriousRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes magneticFloat {
+    0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+    25% { transform: translateY(-8px) rotateZ(0.5deg); }
+    50% { transform: translateY(-4px) rotateZ(0deg); }
+    75% { transform: translateY(-10px) rotateZ(-0.5deg); }
+}
+
+@keyframes subtleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.002); }
+}
+
+@keyframes subtlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.005); }
+}
+
+@keyframes appetizingGlow {
+    0% { 
+        background-position: 0% 50%; 
+        filter: brightness(1) saturate(1);
+    }
+    50% { 
+        background-position: 100% 50%; 
+        filter: brightness(1.05) saturate(1.1);
+    }
+    100% { 
+        background-position: 0% 50%; 
+        filter: brightness(1) saturate(1);
+    }
+}
+
+@keyframes appetiteGlow {
+    0%, 100% { 
+        filter: 
+            drop-shadow(0 8px 24px rgba(0, 0, 0, 0.6))
+            drop-shadow(0 0 16px rgba(255, 215, 0, 0.4));
+    }
+    50% { 
+        filter: 
+            drop-shadow(0 12px 36px rgba(0, 0, 0, 0.7))
+            drop-shadow(0 0 24px rgba(255, 215, 0, 0.6));
+    }
+}
+
+@keyframes steamRise {
+    0% { transform: translateY(0px) scale(1); opacity: 0.1; }
+    50% { transform: translateY(-15px) scale(1.05); opacity: 0.05; }
+    100% { transform: translateY(-30px) scale(1.1); opacity: 0; }
+}
+
+@keyframes honeyDrip {
+    0%, 100% { 
+        height: 8px; 
+        opacity: 0.6; 
+        transform: translateX(-50%) scaleY(1);
+    }
+    50% { 
+        height: 12px; 
+        opacity: 0.8; 
+        transform: translateX(-50%) scaleY(1.3);
+    }
+}
+
+@keyframes shimmerLine {
+    0%, 100% { 
+        width: 120px; 
+        opacity: 0.8; 
+    }
+    50% { 
+        width: 160px; 
+        opacity: 1; 
+    }
+}
+
+@keyframes gentleGlow {
+    0%, 100% { 
+        opacity: 0.8; 
+        text-shadow: 0 0 16px rgba(255, 215, 0, 0.6);
+    }
+    50% { 
+        opacity: 1; 
+        text-shadow: 0 0 32px rgba(255, 215, 0, 0.8);
+    }
+}
+
+@keyframes borderGlow {
+    0%, 100% { 
+        opacity: 0.3; 
+        filter: blur(1.5px);
+    }
+    50% { 
+        opacity: 0.5; 
+        filter: blur(1px);
+    }
+}
+
+/* Responsive Design with Golden Ratio */
+@media (max-width: 1200px) {
+    .collections {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .restaurant-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .container {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .title {
+        font-size: 5rem;
+    }
+    
+    .discount {
+        font-size: 3.5rem;
+    }
+    
+    .promotion {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 2rem;
+        gap: 2rem;
+        max-height: none;
+    }
+    
+    .promo-content {
+        max-width: 100%;
+    }
+    
+    .pasta-bowl {
+        font-size: 8rem;
+        margin-top: 1.5rem;
+    }
+    
+    .collections {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .restaurant-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+    
+    .restaurant-card {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .filter-card {
+        width: 90%;
+        max-width: 380px;
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 3.5rem;
+        letter-spacing: -1px;
+    }
+    
+    .subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .discount {
+        font-size: 3rem;
+        letter-spacing: -2px;
+    }
+    
+    .promo-content h2 {
+        font-size: 2.2rem;
+    }
+    
+    .promo-content p {
+        font-size: 1.2rem;
+    }
+    
+    .cta-btn {
+        padding: 1.4rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .restaurant-card {
+        width: 100%;
+    }
+    
+    .filter-card {
+        width: 95%;
+        padding: 1.5rem;
+    }
+    
+    .promotion {
+        padding: 2rem 1.5rem;
+    }
+    
+    .pasta-bowl {
+        font-size: 6rem;
+    }
+    
+    .restaurant-image-wrapper {
+        height: 180px;
+    }
+}
+
+/* Loading states for faster card loading */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+    filter: blur(1px);
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-top: 2px solid #FFD700;
+    border-radius: 50%;
+    animation: luxuriousSpin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+@keyframes luxuriousSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Focus states for accessibility */
+.filter-btn:focus,
+.cta-btn:focus,
+.apply-btn:focus,
+.close-btn:focus {
+    outline: 2px solid rgba(255, 215, 0, 0.8);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+.collection-card:focus,
+.restaurant-card:focus {
+    outline: 2px solid rgba(255, 215, 0, 0.8);
+    outline-offset: 3px;
+}
+
+input[type="radio"]:focus {
+    outline: 2px solid #FFD700;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(135deg, 
+        rgba(13, 13, 13, 0.8), 
+        rgba(45, 27, 27, 0.6)
+    );
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+    border-radius: 5px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #FFA500, #FF8C00, #FFD700);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* Selection styles */
+::selection {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 165, 0, 0.3));
+    color: #F7E7CE;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+::-moz-selection {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 165, 0, 0.3));
+    color: #F7E7CE;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Fast card loading optimization */
+.restaurant-card {
+    will-change: transform;
+    contain: layout style paint;
+}
+
+.restaurant-card:nth-child(1) { --stagger-delay: 0s; }
+.restaurant-card:nth-child(2) { --stagger-delay: 0.1s; }
+.restaurant-card:nth-child(3) { --stagger-delay: 0.2s; }
+.restaurant-card:nth-child(4) { --stagger-delay: 0.3s; }
+.restaurant-card:nth-child(5) { --stagger-delay: 0.4s; }
+.restaurant-card:nth-child(6) { --stagger-delay: 0.5s; }
+.restaurant-card:nth-child(7) { --stagger-delay: 0.6s; }
+.restaurant-card:nth-child(8) { --stagger-delay: 0.7s; }
+.restaurant-card:nth-child(9) { --stagger-delay: 0.8s; }
+
+.collection-card:nth-child(1) { --stagger-delay: 0s; }
+.collection-card:nth-child(2) { --stagger-delay: 0.15s; }
+.collection-card:nth-child(3) { --stagger-delay: 0.3s; }
+
+/* Performance optimizations */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.restaurant-grid,
+.collections {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Additional offer variations for different cards */
+.restaurant-card:nth-child(1) .offer-badge::before { content: "15% OFF"; }
+.restaurant-card:nth-child(2) .offer-badge::before { content: "20% OFF"; }
+.restaurant-card:nth-child(3) .offer-badge::before { content: "10% OFF"; }
+.restaurant-card:nth-child(4) .offer-badge::before { content: "25% OFF"; }
+.restaurant-card:nth-child(5) .offer-badge::before { content: "12% OFF"; }
+.restaurant-card:nth-child(6) .offer-badge::before { content: "18% OFF"; }
+.restaurant-card:nth-child(7) .offer-badge::before { content: "30% OFF"; }
+.restaurant-card:nth-child(8) .offer-badge::before { content: "22% OFF"; }
+.restaurant-card:nth-child(9) .offer-badge::before { content: "16% OFF"; }
+
+/* Enhanced hover states for better interactivity */
+@media (hover: hover) {
+    .restaurant-card:hover {
+        animation: hoverFloat 0.6s ease-out forwards;
+    }
+    
+    .collection-card:hover {
+        animation: hoverFloat 0.6s ease-out forwards;
+    }
+}
+
+@keyframes hoverFloat {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.01); }
+    100% { transform: translateY(-16px) scale(1.02); }
+}
+
+/* Ensure proper grid behavior on all screen sizes */
+@media (min-width: 1400px) {
+    .restaurant-grid {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .collections {
+        max-width: 1400px;
+        margin: 0 auto 6rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    body::before,
+    .overlay {
+        display: none !important;
+    }
+    
+    .restaurant-card,
+    .collection-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}
+

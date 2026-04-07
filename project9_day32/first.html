@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Collections - Dehradun</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        
+         <!-- Promotion Section -->
+        <section class="promotion">
+            <div class="promo-content">
+                <h2>Get up to</h2>
+                <h1 class="discount">50% OFF</h1>
+                <p>on your dining bills with Food</p>
+                <button class="cta-btn">Check out all the restaurants</button>
+            </div>
+            <div class="promo-image">
+                <div class="pasta-bowl"><img src="./pictures/promotion.png" alt="promo-content" style="width: 500px; height: auto;"></div>
+            </div>
+        </section>
+
+        <!-- Filter Tags -->
+        <section class="filters">
+            <button class="filter-btn active">Filters</button> 
+            <!-- 🔍 -->
+            <button class="filter-btn">Offers</button>
+            <button class="filter-btn">Rating 3+</button>
+            <button class="filter-btn">Open Now</button>
+            <button class="filter-btn">Serves Alcohol</button>
+        </section>
+
+        <!-- Filter card -->
+
+        <div class="filter-card">
+            <div class="filter-header">
+                <h2>Choose Filter</h2>
+            </div>
+            
+            <div class="filter-options">
+                <label><input type="radio" name="filter" value="rating" checked> Sort by Rating</label>
+                <label><input type="radio" name="filter" value="highLow"> High to Low (Price)</label>
+                <label><input type="radio" name="filter" value="costLowHigh"> Cost: Low to High</label>
+                <label><input type="radio" name="filter" value="distance"> Distance</label>
+            </div>
+            <div class="filter-buttons">
+                <button class="apply-btn">Apply</button>
+                <button class="close-btn">Close</button>
+            </div>
+        </div>
+
+        <div class="overlay"></div>
+
+       
+
+        
+    </div>
+
+    <script src="./first.js"></script>
+</body>
+</html>
