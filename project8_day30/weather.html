@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Project</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Animated background elements -->
+        <div class="clouds">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="cloud cloud4"></div>
+        </div>
+        
+        <div class="sun"></div>
+        <div class="stars">
+            <div class="star star1"></div>
+            <div class="star star2"></div>
+            <div class="star star3"></div>
+            <div class="star star4"></div>
+            <div class="star star5"></div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <h1 class="title">Weather Project</h1>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Enter city or country name" id="search-input">
+                <button class="weather-btn">
+                    <span class="btn-icon">☀️☁️</span>
+                    Check Weather
+                </button>
+            </div>
+
+            <!-- Weather Result Box -->
+            <div class="weather-result">
+                <div class="weather-header">
+                    <h2 id="location"></h2>
+                    <div class="weather-icon">☁️</div>
+                </div>
+                
+                <div class="weather-main">
+                    <div class="temperature">
+                        <span id="temp"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./weather.js"></script>
+</body>
+</html>
