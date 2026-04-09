@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AstraVidya — Your Cosmic Guide</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Stars background -->
+  <div class="stars" id="stars"></div>
+  <div class="nebula"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-wrap">
+      <span class="logo-symbol">✦</span>
+      <h1 class="logo">AstraVidya</h1>
+      <span class="logo-symbol">✦</span>
+    </div>
+    <p class="tagline">Ancient Wisdom · Cosmic Secrets · Your Destiny</p>
+  </header>
+
+  <!-- Main form card -->
+  <main>
+    <div class="form-card" id="formSection">
+      <div class="card-glow"></div>
+      <h2 class="form-title">Read Your Cosmic Story</h2>
+      <p class="form-sub">Enter your details and let the stars speak</p>
+
+      <div class="input-group">
+        <label for="userName">Your Full Name</label>
+        <div class="input-wrap">
+          <span class="input-icon">✧</span>
+          <input type="text" id="userName" placeholder="e.g. Arjun Sharma" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="dob">Date of Birth</label>
+        <div class="input-wrap">
+          <span class="input-icon">☽</span>
+          <input type="date" id="dob" />
+        </div>
+      </div>
+
+      <button class="reveal-btn" id="revealBtn" onclick="revealCosmic()">
+        <span class="btn-text">Reveal My Destiny</span>
+        <span class="btn-star">★</span>
+      </button>
+    </div>
+
+    <!-- Loading animation -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="cosmos-loader">
+        <div class="orbit orbit1"><div class="planet p1"></div></div>
+        <div class="orbit orbit2"><div class="planet p2"></div></div>
+        <div class="orbit orbit3"><div class="planet p3"></div></div>
+        <div class="sun-core">☀</div>
+      </div>
+      <p class="loading-text">Reading the stars for you...</p>
+    </div>
+
+    <!-- Results section -->
+    <div class="results-section" id="resultsSection">
+      <div class="results-header">
+        <div class="user-greeting" id="userGreeting"></div>
+        <div class="zodiac-badge" id="zodiacBadge"></div>
+      </div>
+
+      <div class="cards-grid">
+
+        <!-- Sun Sign Card -->
+        <div class="result-card card-sun" id="card1">
+          <div class="card-icon">☀️</div>
+          <h3 class="card-label">Your Sun Sign</h3>
+          <div class="card-value" id="sunSign">—</div>
+          <p class="card-desc" id="sunDesc">—</p>
+        </div>
+
+        <!-- Today's Quote -->
+        <div class="result-card card-quote" id="card2">
+          <div class="card-icon">💫</div>
+          <h3 class="card-label">Today's Cosmic Message</h3>
+          <div class="card-value quote-text" id="todayQuote">—</div>
+        </div>
+
+        <!-- Blessing -->
+        <div class="result-card card-blessing" id="card3">
+          <div class="card-icon">🌸</div>
+          <h3 class="card-label">Today's Blessing</h3>
+          <div class="card-value" id="blessing">—</div>
+          <p class="card-desc" id="blessingDesc">—</p>
+        </div>
+
+        <!-- Lucky Color -->
+        <div class="result-card card-lucky" id="card4">
+          <div class="card-icon">🎨</div>
+          <h3 class="card-label">Lucky Color & Number</h3>
+          <div class="card-value" id="luckyColor">—</div>
+          <div class="color-dot" id="colorDot"></div>
+          <p class="card-desc" id="luckyNumber">—</p>
+        </div>
+
+        <!-- Totka / Nuskha -->
+        <div class="result-card card-totka wide-card" id="card5">
+          <div class="card-icon">🔮</div>
+          <h3 class="card-label">Aaj Ka Khas Nuskha (Totka)</h3>
+          <div class="card-value totka-text" id="totka">—</div>
+          <p class="card-desc" id="totkaEffect">—</p>
+        </div>
+
+        <!-- Day Prediction -->
+        <div class="result-card card-day wide-card" id="card6">
+          <div class="card-icon">🌟</div>
+          <h3 class="card-label">Aaj Ka Din Kaisa Rahega</h3>
+          <div class="day-meter" id="dayMeter">
+            <div class="meter-fill" id="meterFill"></div>
+          </div>
+          <div class="day-label" id="dayLabel">—</div>
+          <p class="card-desc" id="dayPrediction">—</p>
+        </div>
+
+      </div>
+      
+      <button class="again-btn" onclick="resetForm()">✦ Read Again ✦</button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>✦ AstraVidya ✦ &nbsp;|&nbsp; Ancient cosmic wisdom for the modern soul</p>
+  </footer>
+
+  <script src="first.js"></script>
+</body>
+</html>
