@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduCRM — Student Management</title>
+  <link rel="stylesheet" href="first.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+    <span class="logo-text">EduCRM</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">MAIN</div>
+    <a href="#" class="nav-item active" data-view="dashboard">
+      <i class="fa-solid fa-chart-pie"></i><span>Dashboard</span>
+    </a>
+    <a href="#" class="nav-item" data-view="students">
+      <i class="fa-solid fa-users"></i><span>All Students</span>
+      <span class="nav-badge" id="total-badge">50</span>
+    </a>
+    <a href="#" class="nav-item" data-view="followup">
+      <i class="fa-solid fa-phone-volume"></i><span>Follow Up</span>
+      <span class="nav-badge warning" id="followup-badge">0</span>
+    </a>
+    <a href="#" class="nav-item" data-view="pending">
+      <i class="fa-solid fa-clock"></i><span>Under Review</span>
+      <span class="nav-badge info" id="review-badge">0</span>
+    </a>
+
+    <div class="nav-section-label">REPORTS</div>
+    <a href="#" class="nav-item" data-view="successful">
+      <i class="fa-solid fa-circle-check"></i><span>Successful</span>
+      <span class="nav-badge success" id="success-badge">0</span>
+    </a>
+    <a href="#" class="nav-item" data-view="rejected">
+      <i class="fa-solid fa-circle-xmark"></i><span>Rejected</span>
+      <span class="nav-badge danger" id="rejected-badge">0</span>
+    </a>
+
+    <div class="nav-section-label">TOOLS</div>
+    <a href="#" class="nav-item" data-view="add-student">
+      <i class="fa-solid fa-user-plus"></i><span>Add Student</span>
+    </a>
+    <a href="#" class="nav-item" data-view="analytics">
+      <i class="fa-solid fa-chart-line"></i><span>Analytics</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-user">
+      <div class="user-avatar">AD</div>
+      <div class="user-info">
+        <span class="user-name">Admin User</span>
+        <span class="user-role">CRM Manager</span>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content" id="main-content">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+      <div class="breadcrumb">
+        <span id="page-title">Dashboard</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="global-search" placeholder="Search students..."/>
+      </div>
+      <button class="icon-btn" title="Notifications"><i class="fa-solid fa-bell"></i><span class="notif-dot"></span></button>
+      <button class="icon-btn" title="Settings"><i class="fa-solid fa-gear"></i></button>
+    </div>
+  </header>
+
+  <!-- VIEW: DASHBOARD -->
+  <section class="view active" id="view-dashboard">
+    <div class="stats-grid">
+      <div class="stat-card" data-view-target="students">
+        <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-total">50</div>
+          <div class="stat-label">Total Students</div>
+        </div>
+        <div class="stat-trend up"><i class="fa-solid fa-arrow-trend-up"></i> All</div>
+      </div>
+      <div class="stat-card" data-view-target="successful">
+        <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-success">0</div>
+          <div class="stat-label">Successful</div>
+        </div>
+        <div class="stat-trend up" id="trend-success">—</div>
+      </div>
+      <div class="stat-card" data-view-target="followup">
+        <div class="stat-icon amber"><i class="fa-solid fa-phone-volume"></i></div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-followup">0</div>
+          <div class="stat-label">Follow Up</div>
+        </div>
+        <div class="stat-trend warn" id="trend-followup">—</div>
+      </div>
+      <div class="stat-card" data-view-target="rejected">
+        <div class="stat-icon red"><i class="fa-solid fa-circle-xmark"></i></div>
+        <div class="stat-body">
+          <div class="stat-value" id="stat-rejected">0</div>
+          <div class="stat-label">Rejected</div>
+        </div>
+        <div class="stat-trend down" id="trend-rejected">—</div>
+      </div>
+    </div>
+
+    <!-- Recent Activity + Pipeline -->
+    <div class="dashboard-grid">
+      <div class="card">
+        <div class="card-header">
+          <h3>Recent Students</h3>
+          <button class="btn-link" data-nav="students">View all</button>
+        </div>
+        <div class="card-body">
+          <table class="mini-table" id="recent-table">
+            <thead>
+              <tr><th>Name</th><th>College</th><th>Status</th></tr>
+            </thead>
+            <tbody id="recent-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Status Pipeline</h3>
+        </div>
+        <div class="card-body pipeline-body">
+          <div class="pipeline-item">
+            <div class="pipe-label"><span class="dot query"></span>Query Generated</div>
+            <div class="pipe-bar-wrap"><div class="pipe-bar query-bar" id="bar-query"></div></div>
+            <span class="pipe-count" id="cnt-query">0</span>
+          </div>
+          <div class="pipeline-item">
+            <div class="pipe-label"><span class="dot review"></span>Under Review</div>
+            <div class="pipe-bar-wrap"><div class="pipe-bar review-bar" id="bar-review"></div></div>
+            <span class="pipe-count" id="cnt-review">0</span>
+          </div>
+          <div class="pipeline-item">
+            <div class="pipe-label"><span class="dot followup"></span>Follow Up</div>
+            <div class="pipe-bar-wrap"><div class="pipe-bar followup-bar" id="bar-followup"></div></div>
+            <span class="pipe-count" id="cnt-followup">0</span>
+          </div>
+          <div class="pipeline-item">
+            <div class="pipe-label"><span class="dot success"></span>Successful</div>
+            <div class="pipe-bar-wrap"><div class="pipe-bar success-bar" id="bar-success"></div></div>
+            <span class="pipe-count" id="cnt-success">0</span>
+          </div>
+          <div class="pipeline-item">
+            <div class="pipe-label"><span class="dot rejected"></span>Rejected</div>
+            <div class="pipe-bar-wrap"><div class="pipe-bar rejected-bar" id="bar-rejected"></div></div>
+            <span class="pipe-count" id="cnt-rejected">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card fee-card">
+        <div class="card-header">
+          <h3>Fee Overview</h3>
+        </div>
+        <div class="card-body">
+          <div class="fee-stat">
+            <span class="fee-label">Total Fees Collected</span>
+            <span class="fee-value green" id="fee-total">₹0</span>
+          </div>
+          <div class="fee-stat">
+            <span class="fee-label">Avg Admission Fee</span>
+            <span class="fee-value" id="fee-avg">₹0</span>
+          </div>
+          <div class="fee-stat">
+            <span class="fee-label">Highest Fee</span>
+            <span class="fee-value" id="fee-max">₹0</span>
+          </div>
+          <div class="fee-stat">
+            <span class="fee-label">Lowest Fee</span>
+            <span class="fee-value" id="fee-min">₹0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW: STUDENTS TABLE (reused for all filtered views) -->
+  <section class="view" id="view-students">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <div class="search-inline">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="table-search" placeholder="Search by name, ID, college..."/>
+        </div>
+        <select id="filter-status" class="select-ctrl">
+          <option value="">All Statuses</option>
+          <option value="Query Generated">Query Generated</option>
+          <option value="Under Review">Under Review</option>
+          <option value="Follow Up">Follow Up</option>
+          <option value="Successful">Successful</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+        <select id="filter-college" class="select-ctrl">
+          <option value="">All Colleges</option>
+        </select>
+        <button class="btn-outline" id="clear-filters"><i class="fa-solid fa-filter-circle-xmark"></i> Clear</button>
+      </div>
+      <div class="toolbar-right">
+        <span class="result-count" id="result-count">50 students</span>
+        <button class="btn-primary" id="open-add-btn"><i class="fa-solid fa-plus"></i> Add Student</button>
+        <button class="btn-outline" id="export-btn"><i class="fa-solid fa-file-export"></i> Export CSV</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table" id="student-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="select-all"/></th>
+            <th class="sortable" data-col="name">Name <i class="fa-solid fa-sort"></i></th>
+            <th class="sortable" data-col="studentId">Student ID <i class="fa-solid fa-sort"></i></th>
+            <th class="sortable" data-col="admissionFee">Admission Fee <i class="fa-solid fa-sort"></i></th>
+            <th class="sortable" data-col="status">Status <i class="fa-solid fa-sort"></i></th>
+            <th class="sortable" data-col="date">Date <i class="fa-solid fa-sort"></i></th>
+            <th class="sortable" data-col="college">College <i class="fa-solid fa-sort"></i></th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="student-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="pagination" id="pagination"></div>
+  </section>
+
+  <!-- VIEW: ADD/EDIT STUDENT (modal-style inline) -->
+  <section class="view" id="view-add-student">
+    <div class="form-container">
+      <div class="form-header">
+        <h2 id="form-title">Add New Student</h2>
+        <p>Fill in the student details below</p>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="f-name" placeholder="e.g. Arjun Sharma"/>
+        </div>
+        <div class="form-group">
+          <label>Student ID <span class="req">*</span></label>
+          <input type="text" id="f-id" placeholder="e.g. STU-2024-001"/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="f-email" placeholder="student@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="text" id="f-phone" placeholder="+91 9876543210"/>
+        </div>
+        <div class="form-group">
+          <label>College <span class="req">*</span></label>
+          <input type="text" id="f-college" placeholder="e.g. IIT Delhi"/>
+        </div>
+        <div class="form-group">
+          <label>Course</label>
+          <input type="text" id="f-course" placeholder="e.g. B.Tech CSE"/>
+        </div>
+        <div class="form-group">
+          <label>Admission Fee (₹) <span class="req">*</span></label>
+          <input type="number" id="f-fee" placeholder="e.g. 75000"/>
+        </div>
+        <div class="form-group">
+          <label>Admission Date <span class="req">*</span></label>
+          <input type="date" id="f-date"/>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="f-status">
+            <option value="Query Generated">Query Generated</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Follow Up">Follow Up</option>
+            <option value="Successful">Successful</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" id="f-city" placeholder="e.g. Mumbai"/>
+        </div>
+        <div class="form-group full-width">
+          <label>Notes</label>
+          <textarea id="f-notes" rows="3" placeholder="Any additional notes..."></textarea>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-ghost" id="cancel-form">Cancel</button>
+        <button class="btn-primary" id="save-student"><i class="fa-solid fa-floppy-disk"></i> Save Student</button>
+      </div>
+      <div class="form-error" id="form-error"></div>
+    </div>
+  </section>
+
+  <!-- VIEW: ANALYTICS -->
+  <section class="view" id="view-analytics">
+    <div class="analytics-grid">
+      <div class="card full-width-card">
+        <div class="card-header"><h3>College-wise Breakdown</h3></div>
+        <div class="card-body" id="college-breakdown"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Status Distribution</h3></div>
+        <div class="card-body" id="status-dist"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Monthly Admissions</h3></div>
+        <div class="card-body" id="monthly-admissions"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- STUDENT DETAIL MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="student-modal">
+    <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-header">
+      <div class="modal-avatar" id="modal-avatar"></div>
+      <div>
+        <h2 id="modal-name"></h2>
+        <span id="modal-id-badge"></span>
+      </div>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="btn-ghost" id="modal-edit-btn"><i class="fa-solid fa-pen"></i> Edit</button>
+      <button class="btn-danger" id="modal-delete-btn"><i class="fa-solid fa-trash"></i> Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="logic.js"></script>
+</body>
+</html>
